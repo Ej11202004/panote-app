@@ -57,19 +57,12 @@ const RegistrationPage = () => {
     <div className="h-screen flex items-center justify-center">
       <div className="w-full h-full grid lg:grid-cols-2 p-4">
         <div className="max-w-xs m-auto w-full flex flex-col items-center">
-          <div className="absolute top-4 right-4">
+          <div className="flex items-center gap-4 mb-6">
             <ModeToggle />
+            <p className="text-xl font-bold tracking-tight">
+              Create your Pa-Note account
+            </p>
           </div>
-          <div className="w-32 mb-4">
-            <img
-              src={theme === "dark" ? "/Pa-note_white.svg" : "/Pa-note.svg"}
-              alt="Pa-note"
-              className="w-full h-auto"
-            />
-          </div>
-          <p className="mt-4 text-xl font-bold tracking-tight">
-            Create your Pa-Note account
-          </p>
 
           <Form {...form}>
             <form
@@ -162,7 +155,17 @@ const RegistrationPage = () => {
             </p>
           </div>
         </div>
-        <div className="bg-muted hidden lg:block rounded-lg" />
+        <div className="bg-muted hidden lg:block rounded-lg relative">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="w-48">
+              <img
+                src={theme === "dark" ? "/Pa-note_white.svg" : "/Pa-note.svg"}
+                alt="Pa-note"
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

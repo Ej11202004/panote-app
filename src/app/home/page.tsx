@@ -41,9 +41,13 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { ThemeToggle } from "@/components/theme-toggle"
+import { ThemeToggle } from "@/components/theme-toggle";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
+  const router = useRouter();
+
   const [isEditing, setIsEditing] = useState(false);
   const [editingNote, setEditingNote] = useState<{
     id: number | null;
@@ -317,6 +321,7 @@ export default function HomePage() {
                   className="w-full h-auto opacity-70"
                 />
               </div>
+              <Button onClick={() => router.replace("/login")}>Logout</Button>
             </nav>
           </div>
         </div>

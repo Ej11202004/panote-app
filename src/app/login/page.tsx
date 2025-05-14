@@ -24,7 +24,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
+import { useRouter } from "next/navigation";
 function ModeToggle() {
   const { setTheme } = useTheme();
 
@@ -136,7 +136,7 @@ const Login01Page = () => {
               )}
             />
             <Button type="submit" className="mt-4 w-full">
-              Continue with Email
+              Login
             </Button>
           </form>
         </Form>
@@ -150,7 +150,10 @@ const Login01Page = () => {
           </Link>
           <p className="text-sm text-center">
             Don&apos;t have an account?
-            <Link href="#" className="ml-1 underline text-muted-foreground">
+            <Link
+              href="/registration"
+              className="ml-1 underline text-muted-foreground"
+            >
               Create account
             </Link>
           </p>
