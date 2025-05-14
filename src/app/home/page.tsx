@@ -41,6 +41,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function HomePage() {
   const [isEditing, setIsEditing] = useState(false);
@@ -255,8 +256,12 @@ export default function HomePage() {
       )}
       {/* Sidebar */}
       {/* Sidebar */}
-      <div className="w-16 hover:w-80 transition-all duration-300 ease-in-out bg-black text-white min-h-screen flex-shrink-0 group">
+      <div className="w-16 hover:w-80 transition-all duration-300 ease-in-out bg-background text-foreground min-h-screen flex-shrink-0 group">
         <div className="p-4 relative h-full">
+          {/* Add theme toggle to the top of the sidebar */}
+          <div className="mb-4 flex justify-end">
+            <ThemeToggle />
+          </div>
           {/* Hover Me text - visible when sidebar is collapsed */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform group-hover:opacity-0 transition-opacity duration-200 rotate-[-90deg] origin-center whitespace-nowrap">
             <span className="text-sm font-medium">Hover Me</span>
