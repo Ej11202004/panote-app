@@ -305,77 +305,97 @@ export default function HomePage() {
                   </div>
                 </DrawerContent>
               </Drawer>
+              <div className="mt-4 px-4">
+                <img
+                  src="/Pa-note_white.svg"
+                  alt="Pa-note"
+                  className="w-full h-auto opacity-70"
+                />
+              </div>
             </nav>
           </div>
         </div>
       </div>
 
       {/* Main Content - Notes Grid */}
-      <div className="flex-1 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-8">
+      <div className="flex-1 bg-[#1a1a1a] p-8">
         <div className="container mx-auto">
-          {/* Header with Add Note Button */}
-          <div className="flex justify-between items-center mb-8">
-            <div className="w-32">
-              <img src="/Pa-note.svg" alt="Pa-note" className="w-full h-auto" />
-            </div>
-            <div className="flex gap-2">
-              <AlertDialog>
-                <AlertDialogTrigger className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
-                  Delete All Notes
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Sure na sure ka ba?</AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This action cannot be undone. This will permanently delete
-                      all your notes.
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction
-                      onClick={handleDeleteAllNotes}
-                      className="bg-red-600 hover:bg-red-700"
-                    >
-                      Delete All
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-              <div className="group relative">
-                <button
-                  onClick={() => {
-                    setEditingNote({
-                      id: null,
-                      title: "",
-                      content: "",
-                      formatting: {
-                        bold: false,
-                        italic: false,
-                        underline: false,
-                        align: "left",
-                      },
-                    });
-                    setIsEditing(true);
-                  }}
-                >
-                  <svg
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    className="w-8 hover:scale-125 duration-200 hover:stroke-blue-500"
-                  >
-                    <path d="M12 5v14M5 12h14" />
-                  </svg>
+          {/* Header with Logo */}
+          <div className="mb-8">
+            <div className="w-32"></div>
+          </div>
+
+          {/* Action Buttons - Centered and Smaller */}
+          <div className="flex justify-center gap-4 mb-8">
+            <AlertDialog>
+              <AlertDialogTrigger>
+                <button className="relative cursor-pointer p-3 text-center font-barlow inline-flex justify-center text-base uppercase text-white rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 overflow-hidden">
+                  <span className="relative z-20">
+                    <Trash2 className="h-4 w-4" />
+                  </span>
+                  <span className="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out" />
+                  <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-tl-lg border-l-2 border-t-2 top-0 left-0" />
+                  <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-2 border-t-2 top-0 right-0" />
+                  <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[60%] group-hover:h-[90%] rounded-bl-lg border-l-2 border-b-2 left-0 bottom-0" />
+                  <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-br-lg border-r-2 border-b-2 right-0 bottom-0" />
                 </button>
-                <span className="absolute -top-14 left-[50%] -translate-x-[50%] z-20 origin-left scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm font-bold shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
-                  New Note
-                </span>
-              </div>
-            </div>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Sure na sure ka ba?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will permanently delete
+                    all your notes.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={handleDeleteAllNotes}
+                    className="bg-red-600 hover:bg-red-700"
+                  >
+                    Delete All
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+
+            <button
+              onClick={() => {
+                setEditingNote({
+                  id: null,
+                  title: "",
+                  content: "",
+                  formatting: {
+                    bold: false,
+                    italic: false,
+                    underline: false,
+                    align: "left",
+                  },
+                });
+                setIsEditing(true);
+              }}
+              className="relative cursor-pointer p-3 text-center font-barlow inline-flex justify-center text-base uppercase text-white rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 overflow-hidden"
+            >
+              <span className="relative z-20">
+                <svg
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </span>
+              <span className="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out" />
+              <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-tl-lg border-l-2 border-t-2 top-0 left-0" />
+              <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-2 border-t-2 top-0 right-0" />
+              <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[60%] group-hover:h-[90%] rounded-bl-lg border-l-2 border-b-2 left-0 bottom-0" />
+              <span className="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-br-lg border-r-2 border-b-2 right-0 bottom-0" />
+            </button>
           </div>
 
           {/* Notes Grid or Edit View */}
@@ -391,70 +411,66 @@ export default function HomePage() {
                 {notes.map((note) => (
                   <CarouselItem key={note.id}>
                     <div className="p-1">
-                      <AspectRatio
-                        ratio={4 / 3}
-                        className="bg-white rounded-xl border-2 border-black overflow-hidden"
+                      <div
+                        className="relative bg-[#212121] rounded-xl overflow-hidden p-6 h-full flex flex-col"
+                        style={{
+                          background:
+                            "linear-gradient(#212121, #212121) padding-box, linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box",
+                          border: "2px solid transparent",
+                        }}
                       >
-                        <div className="p-6 h-full flex flex-col">
-                          <h2 className="text-xl font-medium mb-4 truncate">
-                            {note.title}
-                          </h2>
-                          {note.content.length > 150 ? (
-                            <p className="text-sm text-gray-500 italic mb-4">
-                              Content is too long, cannot be previewed.
-                            </p>
-                          ) : (
-                            <p className="text-sm text-gray-600 mb-4 line-clamp-3 flex-1">
-                              {note.content}
-                            </p>
-                          )}
-                          <div className="flex justify-end gap-2 mt-auto">
-                            <span className="text-sm text-gray-500 mr-auto">
-                              Note {note.id} •{" "}
-                              {new Date(note.createdAt).toLocaleDateString()}
-                            </span>
-                            <button
-                              onClick={() => handleEditNote(note)}
-                              className="text-zinc-600 hover:text-[#634647]"
-                              title="Edit note"
-                            >
-                              <Pencil size={16} />
-                            </button>
-                            <AlertDialog>
-                              <AlertDialogTrigger>
-                                <Trash2 className="h-4 w-4 text-destructive" />
-                              </AlertDialogTrigger>
-                              <AlertDialogContent>
-                                <AlertDialogHeader>
-                                  <AlertDialogTitle>
-                                    Delete Note
-                                  </AlertDialogTitle>
-                                  <AlertDialogDescription>
-                                    Are you sure you want to delete this note?
-                                    This action cannot be undone.
-                                  </AlertDialogDescription>
-                                </AlertDialogHeader>
-                                <AlertDialogFooter>
-                                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                  <AlertDialogAction
-                                    onClick={() => handleDelete(note.id)}
-                                  >
-                                    Delete
-                                  </AlertDialogAction>
-                                </AlertDialogFooter>
-                              </AlertDialogContent>
-                            </AlertDialog>
-                          </div>
+                        <h2 className="text-xl font-medium mb-4 truncate text-white">
+                          {note.title}
+                        </h2>
+                        {note.content.length > 150 ? (
+                          <p className="text-sm text-gray-400 italic mb-4">
+                            Content is too long, cannot be previewed.
+                          </p>
+                        ) : (
+                          <p className="text-sm text-gray-300 mb-4 line-clamp-3 flex-1">
+                            {note.content}
+                          </p>
+                        )}
+                        <div className="flex justify-end gap-2 mt-auto">
+                          <span className="text-sm text-gray-400 mr-auto">
+                            Note {note.id} •{" "}
+                            {new Date(note.createdAt).toLocaleDateString()}
+                          </span>
+                          <button
+                            onClick={() => handleEditNote(note)}
+                            className="text-gray-300 hover:text-[#e81cff]"
+                            title="Edit note"
+                          >
+                            <Pencil size={16} />
+                          </button>
+                          <AlertDialog>
+                            <AlertDialogTrigger>
+                              <Trash2 className="h-4 w-4 text-red-400 hover:text-red-500" />
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>Delete Note</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  Are you sure you want to delete this note?
+                                  This action cannot be undone.
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <AlertDialogAction
+                                  onClick={() => handleDelete(note.id)}
+                                >
+                                  Delete
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
                         </div>
-                      </AspectRatio>
+                      </div>
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <div className="flex justify-center gap-2 mt-4">
-                <CarouselPrevious />
-                <CarouselNext />
-              </div>
             </Carousel>
           ) : (
             <div className="max-w-4xl mx-auto transform transition-all duration-500 animate-fade-scale-up">
