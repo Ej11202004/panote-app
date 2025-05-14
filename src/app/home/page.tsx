@@ -102,7 +102,7 @@ export default function HomePage() {
       };
 
       recognition.start();
-    } catch (error) {
+    } catch {
       console.error("Speech recognition not supported");
       showNotification(
         "Speech recognition is not supported in your browser",
