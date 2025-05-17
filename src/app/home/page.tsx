@@ -69,10 +69,10 @@ export default function HomePage() {
     },
   });
 
-  // Add this state for recording
+  
   const [isRecording, setIsRecording] = useState(false);
 
-  // Add the handler here
+  
   const handleStartRecording = async () => {
     try {
       const SpeechRecognition =
@@ -119,7 +119,7 @@ export default function HomePage() {
       title: "Note Title",
       content:
         "This is a preview of the note content. It will show the first few lines of the note...",
-      createdAt: new Date().toISOString(), // Add creation date
+      createdAt: new Date().toISOString(), 
     },
   ]);
 
@@ -157,7 +157,7 @@ export default function HomePage() {
         id: notes.length > 0 ? Math.max(...notes.map((n) => n.id)) + 1 : 1,
         title: editingNote.title.trim(),
         content: editingNote.content.trim(),
-        createdAt: new Date().toISOString(), // Add creation date for new notes
+        createdAt: new Date().toISOString(), 
       };
       setNotes((prevNotes) => [...prevNotes, newNote]);
       showNotification("Note added successfully", "success");
@@ -170,7 +170,7 @@ export default function HomePage() {
               id: editingNote.id,
               title: editingNote.title.trim(),
               content: editingNote.content.trim(),
-              createdAt: note.createdAt, // Preserve the original creation date
+              createdAt: note.createdAt, 
             };
           }
           return note;
@@ -200,14 +200,14 @@ export default function HomePage() {
   const handleFormatting = (value: string[]) => {
     const newFormatting = { ...editingNote.formatting };
 
-    // Handle alignment separately (only one alignment can be active at a time)
+    
     const alignmentValue = value.find((v) =>
       ["left", "center", "right"].includes(v)
     );
     newFormatting.align =
       (alignmentValue as "left" | "center" | "right") || "left";
 
-    // Handle other formatting options
+    
     newFormatting.bold = value.includes("bold");
     newFormatting.italic = value.includes("italic");
     newFormatting.underline = value.includes("underline");
